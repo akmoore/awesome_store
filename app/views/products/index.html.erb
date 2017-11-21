@@ -2,7 +2,7 @@
 
 <h1>Products</h1>
 
-<table>
+<table class="table table-hover table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,11 +19,11 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.price %></td>
+        <td><%= number_to_currency(product.price) %></td>
         <td><%= product.quantity %></td>
-        <td><%= product.description %></td>
-        <td><%= product.brand %></td>
-        <td><%= product.category %></td>
+        <td><%= product.description.html_safe %></td>
+        <td><%= product.brand.name %></td>
+        <td><%= product.category.name %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
