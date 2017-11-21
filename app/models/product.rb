@@ -1,21 +1,31 @@
 class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :category
+
+  has_attached_file :avatar, styles: {medium: '300x300#', thumb: '100x100#'} #=> center and crop into a square
+  # has_attached_file :avatar, styles: {medium: '300x300>', thumb: '100x100>'} #=> keep deminsions
+
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  
 end
 
 # == Schema Information
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  price       :decimal(, )
-#  quantity    :integer
-#  description :text
-#  brand_id    :integer
-#  category_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id                  :integer          not null, primary key
+#  name                :string
+#  price               :decimal(, )
+#  quantity            :integer
+#  description         :text
+#  brand_id            :integer
+#  category_id         :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  avatar_file_name    :string
+#  avatar_content_type :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
