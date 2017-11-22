@@ -1,42 +1,73 @@
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <p>
+        <%= image_tag @product.avatar.url %>
+        <%= image_tag @product.avatar.url(:medium) %>
+        <%= image_tag @product.avatar.url(:thumb) %>
+      </p>
+    </div>
+  </div>
+</div>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag @product.avatar.url %>
-  <%= image_tag @product.avatar.url(:medium) %>
-  <%= image_tag @product.avatar.url(:thumb) %>
-</p>
+
 
 <p>
   <strong>Name:</strong>
-  <%= @product.name %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @product.price %>
 </p>
 
 <p>
   <strong>Quantity:</strong>
-  <%= @product.quantity %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description.html_safe %>
 </p>
 
 <p>
   <strong>Brand:</strong>
-  <%= @product.brand %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h1 class="text-center"><%= @product.name %></h1>
+      <br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="product-image">
+              <%= image_tag @product.avatar.url %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Price:</strong> <%= @product.price %></li>
+          <li class="list-group-item"><strong>Quantity:</strong> <%= @product.quantity %></li>
+          <li class="list-group-item"><%= @product.description.html_safe %></li>
+          <li class="list-group-item"><strong>Brand:</strong>  <%= @product.brand.name %></li>
+          <li class="list-group-item"><strong>Category:</strong> <%= @product.category.name %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
