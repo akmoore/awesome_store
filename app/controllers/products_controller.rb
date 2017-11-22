@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -71,5 +72,16 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :price, :quantity, :description, :brand_id, :category_id, :avatar)
+    end
+
+    def authenticate_admin!
+      unless current_user.try(:admin?)
+        #let the current user do something
+          raise SecurityError
+      end
+    end
+
+    rescue_from SecurityError do
+      redirect_back(fallback_location: root_path, notice: "You don't have access to that")
     end
 end
