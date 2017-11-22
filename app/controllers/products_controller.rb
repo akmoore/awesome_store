@@ -73,15 +73,4 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :quantity, :description, :brand_id, :category_id, :avatar)
     end
-
-    def authenticate_admin!
-      unless current_user.try(:admin?)
-        #let the current user do something
-          raise SecurityError
-      end
-    end
-
-    rescue_from SecurityError do
-      redirect_back(fallback_location: root_path, notice: "You don't have access to that")
-    end
 end
