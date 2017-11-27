@@ -9,6 +9,17 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12">        
+            <% if params[:category_id] %>
+                <h3> All <%= @category.name.capitalize %></h3>
+            <% else %>
+                <h3>All Products</h3>
+            <% end %>
+
+            <% if @products.empty? %>
+                <h2>There are no products in <%= @category.name.capitalize %></h2>
+            <% end %>
+        </div>
         <% @products.each do |product| %>
             <div class="col-sm-4">
                 <div class="panel panel-default">
@@ -34,6 +45,8 @@
                     </div>
                     <div class="modal-body">
                         <%= image_tag product.avatar.url(:medium) %>
+                        <br>
+                        <br>
                         <p><%= number_to_currency(product.price) %></p>
                         <p><%= sanitize(product.description) %></p>
                     </div>
