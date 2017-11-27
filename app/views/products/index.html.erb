@@ -16,6 +16,7 @@
       <table class="table table-hover table-striped">
         <thead>
           <tr>
+            <th></th>
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -29,6 +30,7 @@
         <tbody>
           <% @products.each do |product| %>
             <tr>
+              <td><%= image_tag product.avatar.url(:thumb) %></td>
               <td><%= product.name %></td>
               <td><%= number_to_currency(product.price) %></td>
               <td><%= product.quantity %></td>
