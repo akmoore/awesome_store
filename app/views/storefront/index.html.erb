@@ -33,6 +33,7 @@
                             <h5><%= product.name %></h5>
                             <small>quick info</small>
                         </a>
+                        <%= button_to 'Add to Cart', line_items_path(product_id: product), class: 'btn btn-success btn-sm'%>
                     </div>
                 </div>
             </div>
