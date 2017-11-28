@@ -6,7 +6,16 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    # @search = params[:search]
+    if params[:search]
+      @products = Product.search_by_name_or_description(params[:search], params[:page])
+      if @products.empty?
+        flash.now[:notice] = "No result for #{params[:search]}, showing all products instead."
+        @products = Product.all
+      end
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1

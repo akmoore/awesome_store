@@ -24,14 +24,25 @@
         <li><%= link_to 'About', about_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            <%= form_tag(shop_path, method: :get, role: 'search', class: 'navbar-form') do %>
-                <div class="form-group">
-                    <%= text_field_tag(:search, nil, placeholder: 'Search Products', class: 'form-control input-sm')%>
-                </div>
-                <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
-            <% end %>
-        </li>
+        <% unless current_page?(products_path) %>
+            <li>
+                <%= form_tag(shop_path, method: :get, role: 'search', class: 'navbar-form') do %>
+                    <div class="form-group">
+                        <%= text_field_tag(:search, nil, placeholder: 'Search Products', class: 'form-control input-sm')%>
+                    </div>
+                    <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+                <% end %>
+            </li>
+        <% else %>
+            <li>
+                <%= form_tag(products_path, method: :get, role: 'search', class: 'navbar-form') do %>
+                    <div class="form-group">
+                        <%= text_field_tag(:search, nil, placeholder: 'Search Products', class: 'form-control input-sm')%>
+                    </div>
+                    <%= submit_tag('Search', class: 'btn btn-default btn-sm') %>
+                <% end %>
+            </li>
+        <% end %>
         <% if user_signed_in? %>
             <li><%= link_to 'Account', edit_user_registration_path %></li>   
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
