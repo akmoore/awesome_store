@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:edit, :update, :destroy] #=> resource without the only filter will give access to all routes except 'index' route, the url is singular eg. /cart instead of /carts
   resources :line_items, only: [:create]
+  resources :orders, only: [:new, :create, :show]
 
   devise_for :users
   scope :admin do
