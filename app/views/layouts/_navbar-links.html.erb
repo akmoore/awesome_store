@@ -24,6 +24,7 @@
         <li><%= link_to 'About', about_path %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to fa_icon('shopping-cart', text: 'Cart'), edit_cart_path %></li>
         <% unless current_page?(products_path) %>
             <li>
                 <%= form_tag(shop_path, method: :get, role: 'search', class: 'navbar-form') do %>
