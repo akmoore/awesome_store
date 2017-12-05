@@ -24,17 +24,19 @@
             </table>
 
             <h3>Order Subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
-            <%= link_to "Continue Shopping!", shop_path, class: 'btn btn-default btn-sm' %>
-            <% unless @cart.line_items.empty? %>
-                <!-- @cart is the same as cart_path(@cart); for second parameter in the link_to method -->
-                <%= link_to "Empty Cart", @cart, 
-                                        method: :delete, 
-                                        data: { confirm: "Are you sure?"}, 
-                                        class: 'btn btn-default btn-sm' %>
-                <div >
-                    <%= link_to 'Checkout', new_order_path, class: 'btn btn-success btn-sm' %>
-                </div>
-            <% end %>
+            <div id="cart-buttons">
+                <%= link_to "Continue Shopping!", shop_path, class: 'btn btn-default btn-sm' %>
+                <% unless @cart.line_items.empty? %>
+                    <!-- @cart is the same as cart_path(@cart); for second parameter in the link_to method -->
+                    <%= link_to "Empty Cart", @cart, 
+                                            method: :delete, 
+                                            data: { confirm: "Are you sure?"}, 
+                                            class: 'btn btn-default btn-sm' %>
+                    <%= link_to 'Checkout', new_order_path, class: 'btn btn-success btn-sm chk-out-btn' %>
+                    <div id="orders">
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

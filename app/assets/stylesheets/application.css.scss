@@ -20,3 +20,13 @@
 @import 'categories';
 @import 'products';
 @import 'orders';
+
+#cart-buttons {
+    position: relative;
+    width: 100%;
+}
+
+.chk-out-btn {
+    right: 0px;
+    position: absolute;
+}
