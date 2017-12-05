@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  #=> Paperclip working with Heroku/Production Environment
+  #=> Paperclip working with Heroku/Production Environment via AWS
   config.paperclip_defaults = {
     storage: :s3,
     s3_region: ENV['aws_s3_region'],
