@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">        
             <% if params[:category_id] %>
-                <h3> All <%= @category.name.capitalize %></h3>
+                <h3> All <%= @category.try(:name).capitalize %></h3>
             <% else %>
                 <h3>All Products</h3>
             <% end %>
