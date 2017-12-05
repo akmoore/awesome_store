@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   validates_numericality_of :quantity, greater_than_or_equal_to: 0
 
   def self.search_by_name_or_description(string, page)
-    where("name LIKE ? OR description LIKE ?", "%#{string}%", "%#{string}%").paginate(:page => page)
+    where("name LIKE LOWER(?) OR description LIKE LOWER(?)", "%#{string.downcase}%", "%#{string.downcase}%").paginate(:page => page)
   end
 
   private
