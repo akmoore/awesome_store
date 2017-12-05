@@ -18,7 +18,7 @@
             <% end %>
 
             <% if @products.empty? %>
-                <h2>There are no products in <%= @category.name.capitalize %></h2>
+                <h2>There are no products in <%= @category.try(:name).capitalize %></h2>
             <% end %>
         </div>
         <% @products.each do |product| %>
