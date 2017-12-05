@@ -59,6 +59,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'annotate'
   gem 'sqlite3'
+  
+  # ----- Secrets -----
+    gem 'figaro'
 end
 
 group :development do

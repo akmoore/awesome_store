@@ -1,6 +1,19 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  #=> Paperclip working with Heroku/Production Environment
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_region: ENV['aws_s3_region'],
+    s3_protocal: 'https',
+    s3_credentials: {
+      bucket: ENV['s3_bucket_name'],
+      access_key_id: ENV['aws_access_key_id'],
+      secret_access_key: ENV['aws_secret_access_key'],
+      s3_host_name: ENV['aws_endpoint']
+    }
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
