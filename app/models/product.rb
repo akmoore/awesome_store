@@ -17,7 +17,7 @@ class Product < ApplicationRecord
   #   where("name LIKE LOWER(?) OR description LIKE LOWER(?)", "%#{string.downcase}%", "%#{string.downcase}%").paginate(:page => page)
   # end
   def self.search_by_name_or_description(string, page)
-    where("name LIKE LOWER(?) OR description LIKE LOWER(?)", "%#{string}%", "%#{string}%").paginate(:page => page)
+    where("name ILIKE ? OR description ILIKE ?", "%#{string}%", "%#{string}%").paginate(:page => page)
   end
 
   private
