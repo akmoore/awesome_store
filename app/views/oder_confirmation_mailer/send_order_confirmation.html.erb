@@ -2,3 +2,7 @@
 <p>
     Your order number is <%= @order.id %> and your total was <%= number_to_currency(@order.subtotal)%>.
 </p>
+
+<p>
+    To see your order, click <%= link_to 'here', @order %>.
+</p>
