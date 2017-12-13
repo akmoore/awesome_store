@@ -10,6 +10,10 @@ class Order < ApplicationRecord
       line_items << item #=> take the new version of line item and push into an array 'line_items'
     end
   end
+
+  def subtotal
+    line_items.select("SUM(quantity * price) AS sum")[0].sum
+  end
 end
 
 # == Schema Information

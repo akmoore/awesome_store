@@ -22,7 +22,8 @@ class OrdersController < ApplicationController
     if @order.save
         Cart.destroy(session[:cart_id]) #=> destroy the cart that the browser is using, so we're pulling it out of the session
         session[:cart_id] = nil
-        redirect_to shop_url, notice: 'Thanks for your order.'
+        OderConfirmationMailer.send_order_confirmation(current_user, @order).deliver_now #=> sending order confirmation email
+        redirect_to @order, notice: 'Thanks for your order.'
     else
       render :new #=> this will run the new method within the controller, render a new form to save the order.
     end
